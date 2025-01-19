@@ -1,0 +1,9 @@
+{
+  "err.400": "Bad Request: De server kon het verzoek niet begrijpen.",
+  "err.401": "Unauthorized: Authenticatie is vereist en is mislukt of niet verstrekt.",
+  "err.403": "Forbidden: De server begreep het verzoek maar weigert autorisatie.",
+  "err.404": "Not Found: De gevraagde bron kon niet worden gevonden.",
+  "err.500": "Interne Serverfout: De server heeft een onverwachte toestand ervaren die hem heeft verhinderd om aan het verzoek te voldoen.",
+  "err.501": "Niet geïmplementeerd: De server ondersteunt de gevraagde functie niet.",
+  "err.503": "Service Niet Beschikbaar: De server kan het verzoek momenteel niet verwerken vanwege tijdelijke overbelasting of onderhoud van de server."
+}

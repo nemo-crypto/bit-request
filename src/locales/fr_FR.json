@@ -1,0 +1,9 @@
+{
+  "err.400": "Requête incorrecte : Le serveur n'a pas pu comprendre la requête.",
+  "err.401": "Non autorisé : L'authentification est requise et a échoué ou n'a pas été fournie.",
+  "err.403": "Interdit : Le serveur a compris la requête, mais refuse de l'autoriser.",
+  "err.404": "Non trouvé : La ressource demandée est introuvable.",
+  "err.500": "Erreur Interne du Serveur : Le serveur a rencontré une condition inattendue qui l'a empêché de répondre à la requête.",
+  "err.501": "Non Mis en Œuvre : Le serveur ne prend pas en charge la fonction demandée.",
+  "err.503": "Service Indisponible : Le serveur est actuellement incapable de traiter la requête en raison d'une surcharge temporaire ou de la maintenance du serveur."
+}

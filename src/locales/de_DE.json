@@ -1,0 +1,9 @@
+{
+  "err.400": "Bad Request: Der Server konnte die Anfrage nicht verstehen.",
+  "err.401": "Unauthorized: Authentifizierung ist erforderlich und ist fehlgeschlagen oder wurde nicht bereitgestellt.",
+  "err.403": "Forbidden: Der Server hat die Anfrage verstanden, verweigert jedoch die Autorisierung.",
+  "err.404": "Not Found: Die angeforderte Ressource konnte nicht gefunden werden.",
+  "err.500": "Interner Serverfehler: Der Server hat einen unerwarteten Zustand erlebt, der ihn daran hinderte, die Anfrage zu erfüllen.",
+  "err.501": "Nicht implementiert: Der Server unterstützt das angeforderte Feature nicht.",
+  "err.503": "Dienst nicht verfügbar: Der Server kann die Anfrage derzeit aufgrund vorübergehender Überlastung oder Wartung nicht verarbeiten."
+}

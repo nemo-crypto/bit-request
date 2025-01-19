@@ -1,0 +1,9 @@
+{
+  "err.400": "Felaktig förfrågan: Servern kunde inte förstå förfrågan.",
+  "err.401": "Obehörig: Autentisering krävs och har misslyckats eller har inte tillhandahållits.",
+  "err.403": "Förbjuden: Servern förstod förfrågan men vägrar att auktorisera den.",
+  "err.404": "Ej hittad: Begärd resurs kunde inte hittas.",
+  "err.500": "Intern Serverfel: Servern stötte på ett oväntat tillstånd som förhindrade den från att uppfylla begäran.",
+  "err.501": "Ej Implementerat: Servern stöder inte den begärda funktionen.",
+  "err.503": "Tjänst Ej Tillgänglig: Servern kan för närvarande inte hantera begäran på grund av temporär överbelastning eller underhåll av servern."
+}

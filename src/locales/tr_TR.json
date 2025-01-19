@@ -1,0 +1,9 @@
+{
+  "err.400": "Geçersiz İstek: Sunucu isteği anlayamadı.",
+  "err.401": "Yetkisiz: Kimlik doğrulama gerekiyor ve başarısız oldu veya sağlanmadı.",
+  "err.403": "Yasak: Sunucu isteği anladı, ancak yetkilendirmeyi reddediyor.",
+  "err.404": "Bulunamadı: İstenen kaynak bulunamadı.",
+  "err.500": "İç Sunucu Hatası: Sunucu, isteği yerine getirmesini engelleyen beklenmeyen bir durumla karşılaştı.",
+  "err.501": "Uygulanmadı: Sunucu, istenen özelliği desteklemiyor.",
+  "err.503": "Hizmet Kullanılamıyor: Sunucu şu anda geçici olarak aşırı yükleme veya bakım nedeniyle isteği işleyemiyor."
+}

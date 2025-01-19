@@ -1,0 +1,9 @@
+{
+  "err.400": "Zły żądanie: Serwer nie mógł zrozumieć żądania.",
+  "err.401": "Nieautoryzowany: Wymagane jest uwierzytelnienie i nie powiodło się lub nie zostało podane.",
+  "err.403": "Zakazane: Serwer zrozumiał żądanie, ale odmawia autoryzacji.",
+  "err.404": "Nie znaleziono: Nie można znaleźć żądanego zasobu.",
+  "err.500": "Wewnętrzny błąd serwera: Serwer napotkał nieoczekiwaną sytuację, która uniemożliwiła mu spełnienie żądania.",
+  "err.501": "Nie zaimplementowano: Serwer nie obsługuje żądanej funkcji.",
+  "err.503": "Usługa niedostępna: Serwer obecnie nie może obsługiwać żądania z powodu tymczasowego przeciążenia lub konserwacji serwera."
+}

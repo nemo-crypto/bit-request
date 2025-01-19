@@ -1,0 +1,9 @@
+{
+  "err.400": "Solicitud incorrecta: El servidor no pudo entender la solicitud.",
+  "err.401": "No autorizado: Se requiere autenticación y ha fallado o no se ha proporcionado.",
+  "err.403": "Prohibido: El servidor entendió la solicitud, pero se niega a autorizarla.",
+  "err.404": "No encontrado: No se pudo encontrar el recurso solicitado.",
+  "err.500": "Error Interno del Servidor: El servidor encontró una condición inesperada que le impidió cumplir con la solicitud.",
+  "err.501": "No Implementado: El servidor no admite la característica solicitada.",
+  "err.503": "Servicio No Disponible: El servidor actualmente no puede manejar la solicitud debido a una sobrecarga temporal o mantenimiento del servidor."
+}

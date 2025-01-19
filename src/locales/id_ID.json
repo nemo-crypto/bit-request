@@ -1,0 +1,9 @@
+{
+  "err.400": "Permintaan Tidak Valid: Server tidak dapat memahami permintaan.",
+  "err.401": "Tidak Diizinkan: Autentikasi diperlukan dan gagal atau tidak diberikan.",
+  "err.403": "Dilarang: Server memahami permintaan, tetapi menolak memberikan izin.",
+  "err.404": "Tidak Ditemukan: Sumber daya yang diminta tidak dapat ditemukan.",
+  "err.500": "Kesalahan Internal Server: Server mengalami kondisi yang tidak terduga yang mencegahnya memenuhi permintaan.",
+  "err.501": "Belum Diimplementasikan: Server tidak mendukung fitur yang diminta.",
+  "err.503": "Layanan Tidak Tersedia: Server saat ini tidak dapat menangani permintaan karena kelebihan beban sementara atau pemeliharaan server."
+}

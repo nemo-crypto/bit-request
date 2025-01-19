@@ -1,0 +1,9 @@
+{
+  "err.400": "Bad Request: The server could not understand the request.",
+  "err.401": "Unauthorized: Authentication is required and has failed or has not been provided.",
+  "err.403": "Forbidden: You do not have permission to perform this operation",
+  "err.404": "Not Found: The requested resource could not be found.",
+  "err.500": "Internal Server Error: The server encountered an unexpected condition that prevented it from fulfilling the request.",
+  "err.501": "Not Implemented: The server does not support the requested feature.",
+  "err.503": "Service Unavailable: The server is currently unable to handle the request due to temporary overloading or maintenance of the server."
+}

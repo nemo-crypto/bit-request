@@ -1,0 +1,9 @@
+{
+  "err.400": "Yêu cầu Không Hợp Lệ: Máy chủ không thể hiểu yêu cầu.",
+  "err.401": "Không được Ủy Quyền: Yêu cầu xác thực và đã thất bại hoặc không được cung cấp.",
+  "err.403": "Bị Từ Chối: Máy chủ hiểu yêu cầu, nhưng từ chối ủy quyền.",
+  "err.404": "Không Tìm Thấy: Không thể tìm thấy nguồn tài nguyên yêu cầu.",
+  "err.500": "Lỗi Nội Bộ của Máy Chủ: Máy chủ gặp phải một điều kiện không mong muốn đã ngăn chặn nó từ việc thực hiện yêu cầu.",
+  "err.501": "Chưa Thực Hiện: Máy chủ không hỗ trợ tính năng được yêu cầu.",
+  "err.503": "Dịch Vụ Không Khả Dụng: Máy chủ hiện không thể xử lý yêu cầu do quá tải tạm thời hoặc bảo trì máy chủ."
+}

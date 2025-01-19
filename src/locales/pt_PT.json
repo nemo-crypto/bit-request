@@ -1,0 +1,9 @@
+{
+  "err.400": "Pedido Inválido: O servidor não conseguiu entender o pedido.",
+  "err.401": "Não Autorizado: A autenticação é necessária e falhou ou não foi fornecida.",
+  "err.403": "Proibido: O servidor entendeu o pedido, mas recusa autorização.",
+  "err.404": "Não Encontrado: Não foi possível encontrar o recurso solicitado.",
+  "err.500": "Erro Interno do Servidor: O servidor encontrou uma condição inesperada que o impediu de atender ao pedido.",
+  "err.501": "Não Implementado: O servidor não suporta a funcionalidade solicitada.",
+  "err.503": "Serviço Indisponível: O servidor está atualmente incapaz de lidar com o pedido devido a sobrecarga temporária ou manutenção do servidor."
+}
