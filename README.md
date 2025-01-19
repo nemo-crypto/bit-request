@@ -1,12 +1,5 @@
 ## Covers all scenarios of http requests
 
-## Usage
-
-TODO
-
-## Options
-
-TODO
 
 ## Development
 
@@ -29,7 +22,3 @@ $ yarn run docs:build
 # check your project for potential problems
 $ yarn run doctor
 ```
-
-## LICENSE
-
-MIT
