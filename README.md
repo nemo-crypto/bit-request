@@ -1,6 +1,3 @@
-## Covers all scenarios of http requests
-Father + Axios
-
 ## Development
 
 ```bash
