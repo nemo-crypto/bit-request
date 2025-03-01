@@ -142,20 +142,20 @@ export default () => {
 浏览器环境登录用户默认携带设备参数
 
 | 参数               | 含义                   | 默认值                     |
-| ------------------ | ---------------------- | -------------------------- |
-| token              | token                  | token_url                  |
+| ------------------ | ----------------------| -------------------------- |
+| token              | token                 | token_url                  |
 | appName            | 浏览器名称             | navigator.appName          |
-| appCodeName        | 浏览器代码名称         | navigator.appCodeName      |
-| appVersion         | 浏览器版本号           | navigator.appVersion       |
-| userAgent          | 浏览器版本信息         | navigator.userAgent        |
-| cookieEnabled      | 浏览器是否启用 cookie  | navigator.cookieEnabled    |
-| platform           | 客户端操作系统         | navigator.platform         |
+| appCodeName        | 浏览器代码名称          | navigator.appCodeName      |
+| appVersion         | 浏览器版本号            | navigator.appVersion       |
+| userAgent          | 浏览器版本信息          | navigator.userAgent        |
+| cookieEnabled      | 浏览器是否启用 cookie   | navigator.cookieEnabled    |
+| platform           | 客户端操作系统          | navigator.platform         |
 | userLanguage       | 浏览器语言             | navigator.language         |
 | vendor             | 浏览器厂商             | navigator.vendor           |
 | onLine             | 浏览器是否连接网络     | navigator.onLine           |
 | product            | 浏览器产品名称         | navigator.product          |
-| productSub         | 浏览器产品其他信息     | navigator.productSub       |
-| mimeTypesLen       | 浏览器的 MIME 类型数量 | navigator.mimeTypes.length |
+| productSub         | 浏览器产品其他信息      | navigator.productSub       |
+| mimeTypesLen       | 浏览器的 MIME 类型数量  | navigator.mimeTypes.length |
 | pluginsLen         | 浏览器的插件数量       | navigator.plugins.length   |
 | javaEnbled         | 浏览器是否启用 JAVA    | navigator.javaEnabled()    |
 | windowScreenWidth  | 屏幕分辨率 - 宽        | window.screen.width        |
