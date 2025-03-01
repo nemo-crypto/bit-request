@@ -356,7 +356,9 @@ export default () => {
       <div>
         <div>errorMode: {errorMode}</div>
         <br />
+
         <div>errorStatus: {JSON.stringify(error)}</div>
+
         <br />
         <button onClick={switchErrorMode('none')}>errorMode:none</button>
         <button onClick={switchErrorMode('log')}>errorMode:log</button>
