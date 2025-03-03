@@ -260,7 +260,7 @@ export default () => {
 };
 ```
 
-## 上传
+## 文件上传
 
 ```jsx
 import { request } from '@bit/request';
