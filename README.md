@@ -293,7 +293,7 @@ export default () => {
 };
 ```
 
-## 异常流
+## 异常流处理
 
 ```jsx
 import { request } from '@bit/request';
