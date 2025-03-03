@@ -130,10 +130,10 @@ export default () => {
 
 | 参数                   | 说明                  | 类型                 | 默认值            |
 | ---------------------- | --------------------- | -------------------- | ----------------- |
-| publicParams           | 请求携带的公共参数    | Boolean/Object       | 见下 publicparams |
+| publicParams           | 请求携带的公共参数     | Boolean/Object       | 见下 publicparams |
 | urlPrefix              | 请求前缀              | String               | ''                |
 | isReturnNativeResponse | 是否返回原生 response | Boolean              | false             |
-| errorMessageMode       | 错误消息提示类型      | 'toast'/'log'/'none' | 'none'            |
+| errorMessageMode       | 错误消息提示类型       | 'toast'/'log'/'none' | 'none'            |
 | ignoreCancelToken      | 允许重复请求          | Boolean              | false             |
 | retryRequest           | 失败是否重试          | Boolean/Number       | true              |
 
