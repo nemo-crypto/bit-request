@@ -153,9 +153,9 @@ export default () => {
 | userLanguage       | 浏览器语言             | navigator.language         |
 | vendor             | 浏览器厂商             | navigator.vendor           |
 | onLine             | 浏览器是否连接网络      | navigator.onLine           |
-| product            | 浏览器产品名称         | navigator.product          |
-| productSub         | 浏览器产品其他信息      | navigator.productSub       |
-| mimeTypesLen       | 浏览器的 MIME 类型数量  | navigator.mimeTypes.length |
+| product            | 浏览器产品名称         | navigator.product            |
+| productSub         | 浏览器产品其他信息      | navigator.productSub        |
+| mimeTypesLen       | 浏览器的 MIME 类型数量  | navigator.mimeTypes.length  |
 | pluginsLen         | 浏览器的插件数量        | navigator.plugins.length   |
 | javaEnbled         | 浏览器是否启用 JAVA     | navigator.javaEnabled()    |
 | windowScreenWidth  | 屏幕分辨率 - 宽        | window.screen.width        |
