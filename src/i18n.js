@@ -21,7 +21,7 @@ import { getParameterByName } from './utils';
 //     'ko_KR': './locales/ko_KR.json', // 韩语
 // };
 
-const currentLang =
+const currentLang = 
   (typeof window !== 'undefined' &&
     getParameterByName('hl', window?.location?.search || '')) ||
   Cookies.get('clientCommonlanguage') ||
