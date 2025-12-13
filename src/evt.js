@@ -8,7 +8,7 @@ class EventEmitter {
       if (this.eventName !== 'newListener') {
         this.emit('newListener', eventName);
       }
-    }
+    } 
     const callbacks = this._events[eventName] || [];
     callbacks.push(callback);
     this._events[eventName] = callbacks;
