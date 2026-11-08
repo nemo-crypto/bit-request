@@ -12,7 +12,7 @@ export default () => {
 
   const fetchJson = () => {
     request
-      .get('/json/languse/bitruedemand/assetexport/en_US.json')
+      .get('/json/languse/demo-content/assetexport/en_US.json')
       .then((res) => {
         setJson(JSON.stringify(res));
       });
@@ -158,7 +158,7 @@ export default () => {
 
   const fetchJson = () => {
     request
-      .get('/json/languse/bitruedemand/assetexport/en_US.json')
+      .get('/json/languse/demo-content/assetexport/en_US.json')
       .then((res) => {
         setJson(JSON.stringify(res));
       });
@@ -210,7 +210,7 @@ export default () => {
 
   const fetchJson = () => {
     request
-      .get('/json/languse/bitruedemand/assetexport/en_US.json', null, null, {
+      .get('/json/languse/demo-content/assetexport/en_US.json', null, null, {
         transformData: (res) => {
           return {
             code: 0,
@@ -283,7 +283,7 @@ export default () => {
 
   const fetchJson = () => {
     request
-      .get('/json/languse/bitruedemand/assetexport/en_US1.json', null, null, {
+      .get('/json/languse/demo-content/assetexport/en_US1.json', null, null, {
         errorMessageMode: errorMode,
       })
       .then((res) => {

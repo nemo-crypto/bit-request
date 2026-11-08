@@ -1,3 +1,27 @@
+# @bit/request · 请求客户端与 React Hook
+
+基于Axios的请求封装，提供默认request、可配置createRequest以及useRequest Hook。现有长示例保留在下文，本节补齐源码入口、默认行为和接入条件。
+
+## 模块与工程命令
+
+| 入口 | 作用 |
+|---|---|
+| [src/index.js](src/index.js) | 导出request、createRequest与useRequest |
+| [src/Request/index.js](src/Request/index.js) | 默认实例与选项合并 |
+| `src/Request/` | 请求、重试、取消、转换和状态检查 |
+| `src/hooks/UseRequest/` | Hook状态、缓存与请求执行 |
+| `docs/` | 文档内容，使用dumi运行 |
+
+本地开发执行npm install后，可运行npm run dev、npm run build、npm run docs:build与npm run doctor，均来自实际package.json。prepare会安装husky并执行dumi setup，需在合适的开发环境准备Git与文档工具；当前没有锁定文件和test脚本。
+
+## 默认行为与宿主适配
+
+createRequest默认baseURL为 `/`；服务环境超时5秒、浏览器6秒；默认表单Content-Type、withCredentials为false，并开启默认公共参数、错误提示、重复请求处理与重试选项。是否适合真实接口应逐项核实src/Request内的transform与retry实现。
+
+下文示例中的业务路径依赖原宿主后端，并非本目录附带的测试服务。接入时替换baseURL、鉴权、响应结构、公共参数和提示UI；写接口重试需确认实际幂等语义。
+
+本轮仅核对入口、默认配置和脚本，不安装依赖、不访问原业务接口；原有API演示继续保留如下。
+
 ## Development 
 
 ```bash
@@ -20,7 +44,7 @@ $ yarn run docs:build
 $ yarn run doctor
 ```
 
-# request
+## Request API
 
 ```jsx
 import { request } from '@bit/request';
