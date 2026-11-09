@@ -2,6 +2,18 @@
 
 基于Axios的请求封装，提供默认request、可配置createRequest以及useRequest Hook。现有长示例保留在下文，本节补齐源码入口、默认行为和接入条件。
 
+<!-- BEGIN project-discovery -->
+## 项目定位与实践入口
+
+Axios HTTP client and React useRequest hook with configurable interceptors, cancellation, retry and caching. JavaScript 请求封装、异步状态管理与 Dumi 使用文档。
+
+适合从以下入口阅读实现与接入条件：
+
+- [请求入口](src/index.js)
+- [请求封装](src/Request/)
+- [React Hook](src/hooks/UseRequest/)
+<!-- END project-discovery -->
+
 ## 模块与工程命令
 
 | 入口 | 作用 |
@@ -402,4 +414,3 @@ export default () => {
   );
 };
 ```
-
