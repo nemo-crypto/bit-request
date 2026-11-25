@@ -26,12 +26,14 @@ const getCache = (key) => {
 };
 
 const clearCache = (key) => {
-  if (key) {
-    const cacheKeys = Array.isArray(key) ? key : [key];
-    cacheKeys.forEach((cacheKey) => cache.delete(cacheKey));
-  } else {
-    cache.clear();
-  }
+  const cacheKeys = key === undefined
+    ? [...cache.keys()]
+    : Array.isArray(key) ? key : [key];
+  cacheKeys.forEach((cacheKey) => {
+    const entry = cache.get(cacheKey);
+    if (entry?.timer !== undefined) clearTimeout(entry.timer);
+    cache.delete(cacheKey);
+  });
 };
 
 export { clearCache, getCache, setCache };
