@@ -50,3 +50,20 @@ test('each subscription is independent even when callbacks are shared', () => {
   assert.equal(calls, 2);
   stopC();
 });
+
+test('new subscriptions during dispatch join the next notification only', () => {
+  const values = [];
+  let stopLate;
+  const stopFirst = subscribe('late-subscriber', (value) => {
+    values.push(`first:${value}`);
+    stopLate ??= subscribe('late-subscriber', (next) => values.push(`late:${next}`));
+  });
+  trigger('late-subscriber', 1);
+  assert.deepEqual(values, ['first:1']);
+  trigger('late-subscriber', 2);
+  assert.deepEqual(values, ['first:1', 'first:2', 'late:2']);
+  stopFirst();
+  stopLate();
+  trigger('late-subscriber', 3);
+  assert.equal(values.length, 3);
+});
