@@ -9,15 +9,11 @@ const setCachePromise = (cacheKey, promise) => {
   // Because the promise.finally will change the reference of the promise
   cachePromise.set(cacheKey, promise);
 
-  // no use promise.finally for compatibility
-  promise
-    .then((res) => {
-      cachePromise.delete(cacheKey);
-      return res;
-    })
-    .catch(() => {
-      cachePromise.delete(cacheKey);
-    });
+  // 仅清理当前请求拥有的条目，旧请求完成不能删除后来的请求。
+  const release = () => {
+    if (cachePromise.get(cacheKey) === promise) cachePromise.delete(cacheKey);
+  };
+  promise.then(release, release);
 };
 
 export { getCachePromise, setCachePromise };
