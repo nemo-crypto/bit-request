@@ -20,3 +20,16 @@ test('an older request resolving does not evict its in-flight replacement', asyn
   await next.promise;
   assert.equal(getCachePromise('replace'), undefined);
 });
+
+test('an older rejection preserves the replacement and both outcomes clean up', async () => {
+  const first = deferred();
+  const next = deferred();
+  setCachePromise('reject', first.promise);
+  setCachePromise('reject', next.promise);
+  first.reject(new Error('old failed'));
+  await assert.rejects(first.promise, /old failed/);
+  assert.equal(getCachePromise('reject'), next.promise);
+  next.reject(new Error('new failed'));
+  await assert.rejects(next.promise, /new failed/);
+  assert.equal(getCachePromise('reject'), undefined);
+});
