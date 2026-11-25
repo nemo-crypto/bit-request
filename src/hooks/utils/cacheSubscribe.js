@@ -1,20 +1,27 @@
-const listeners = {};
+const listeners = new Map();
 
 const trigger = (key, data) => {
-  if (listeners[key]) {
-    listeners[key].forEach((item) => item(data));
+  // 固定本轮订阅快照，回调内清理订阅不会跳过其他消费者。
+  const subscriptions = listeners.get(key);
+  if (subscriptions) {
+    [...subscriptions].forEach(({ listener }) => listener(data));
   }
 };
 
 const subscribe = (key, listener) => {
-  if (!listeners[key]) {
-    listeners[key] = [];
+  let subscriptions = listeners.get(key);
+  if (!subscriptions) {
+    subscriptions = new Set();
+    listeners.set(key, subscriptions);
   }
-  listeners[key].push(listener);
+  const subscription = { listener };
+  subscriptions.add(subscription);
 
   return function unsubscribe() {
-    const index = listeners[key].indexOf(listener);
-    listeners[key].splice(index, 1);
+    subscriptions.delete(subscription);
+    if (!subscriptions.size && listeners.get(key) === subscriptions) {
+      listeners.delete(key);
+    }
   };
 };
 
