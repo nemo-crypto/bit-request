@@ -8,6 +8,7 @@ function useRequest(service, options, plugins) {
   const { manual = false, ...rest } = options || {};
 
   const serviceRef = useRef(service);
+  serviceRef.current = service;
 
   const update = useUpdate();
 
