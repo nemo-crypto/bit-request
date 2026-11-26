@@ -1,19 +1,24 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 function loadingDeleyPlugin(fetchInstance, options) {
   const { loadingDeley, ready } = options;
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const timerRef = useRef();
 
-  if (!loadingDeley) {
-    return {};
-  }
-
   const cancelTimeout = () => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
+      timerRef.current = undefined;
     }
   };
+
+  // 配置关闭或改变时，旧请求的延迟回调也必须清理。
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useEffect(() => cancelTimeout, [loadingDeley]);
+
+  if (!loadingDeley) {
+    return {};
+  }
 
   return {
     onBefore: () => {
