@@ -15,7 +15,7 @@ const cachePlugin = (
   },
 ) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const unSubscribeRef = useRef();
+  const previousKeyRef = useRef(cacheKey);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const currentPromiseRef = useRef();
 
@@ -53,17 +53,20 @@ const cachePlugin = (
       }
     }
 
-    // subscribe same cachekey update, trigger update
-    unSubscribeRef.current = subscribe(cacheKey, (data) => {
-      fetchInstance.setState({ data });
-    });
   }, []);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
-    return () => {
-      unSubscribeRef.current?.();
-    };
-  }, []);
+    if (previousKeyRef.current !== cacheKey) {
+      // 旧请求的结果不应写入新缓存键；同时清除旧键的数据和错误状态。
+      fetchInstance.cancel();
+      currentPromiseRef.current = undefined;
+      const cached = cacheKey ? _getCache(cacheKey) : undefined;
+      fetchInstance.setState({ data: cached?.data, params: cached?.params, error: undefined, loading: false });
+      previousKeyRef.current = cacheKey;
+    }
+    if (!cacheKey) return;
+    return subscribe(cacheKey, data => fetchInstance.setState({ data }));
+  }, [cacheKey]);
 
   if (!cacheKey) {
     return {};
@@ -111,31 +114,19 @@ const cachePlugin = (
     },
     onSuccess: (data, params) => {
       if (cacheKey) {
-        // cancel subscribe, avoid trgger self
-        unSubscribeRef.current?.();
         _setCache(cacheKey, {
           data,
           params,
           time: new Date().getTime(),
         });
-        // resubscribe
-        unSubscribeRef.current = subscribe(cacheKey, (d) => {
-          fetchInstance.setState({ data: d });
-        });
       }
     },
     onMutate: (data) => {
       if (cacheKey) {
-        // cancel subscribe, avoid trigger self
-        unSubscribeRef.current?.();
         _setCache(cacheKey, {
           data,
           params: fetchInstance.state.params,
           time: new Date().getTime(),
-        });
-        // resubscribe
-        unSubscribeRef.current = subscribe(cacheKey, (d) => {
-          fetchInstance.setState({ data: d });
         });
       }
     },
