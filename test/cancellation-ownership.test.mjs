@@ -45,3 +45,15 @@ test('caller signals retain cancellation while duplicate suppression still works
   controller.abort(); c.finish();
   assert.ok(axios.isCancel((await c.promise).error));
 });
+
+test('completed requests release forwarded abort listeners', async () => {
+  const {getEventListeners} = await import('node:events');
+  const controller = new AbortController();
+  const h = harness();
+  const a = await h.start({signal: controller.signal});
+  assert.equal(getEventListeners(controller.signal, 'abort').length, 1);
+  a.finish();
+  assert.equal((await a.promise).error, undefined);
+  assert.equal(getEventListeners(controller.signal, 'abort').length, 0);
+  assert.equal(a.config.signal.aborted, false);
+});
