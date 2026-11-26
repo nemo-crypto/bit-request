@@ -31,3 +31,18 @@ test('changing cacheKey replaces both the visible data and subscription', () => 
     assert.equal(h.current.data, 'new-update');
   } finally {h.close();}
 });
+
+test('disabling and re-enabling a cache key cleans up and restores subscriptions', () => {
+  const h = setup('key-enable-');
+  try {
+    act(() => h.a.mutate('before'));
+    h.change(undefined);
+    assert.equal(h.current.data, undefined);
+    act(() => h.a.mutate('after'));
+    assert.equal(h.current.data, undefined);
+    h.change('key-enable-a');
+    assert.equal(h.current.data, 'after');
+    act(() => h.a.mutate('live'));
+    assert.equal(h.current.data, 'live');
+  } finally {h.close();}
+});
