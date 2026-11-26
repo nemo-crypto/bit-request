@@ -16,3 +16,11 @@ test('no-content responses and falsy JSON payloads remain successful', async () 
     assert.equal(await client(status, data).get('/payload.json'), data);
   }
 });
+
+test('native responses retain headers and failed statuses still reject', async () => {
+  const native = await client(204, '').get('/empty', {}, {}, {isReturnNativeResponse: true});
+  assert.equal(native.status, 204);
+  for (const status of [300, 400, 503]) {
+    await assert.rejects(client(status, {code: 1}).get('/error'), error => error.status === status);
+  }
+});
