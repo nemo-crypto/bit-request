@@ -18,6 +18,10 @@ function loadingDeleyPlugin(fetchInstance, options) {
   return {
     onBefore: () => {
       cancelTimeout();
+      return { loading: false };
+    },
+    // 缓存直接返回时不会发出请求，也不应启动 loading 定时器。
+    onRequest: () => {
       if (ready !== false) {
         timerRef.current = setTimeout(() => {
           fetchInstance.setState({
@@ -26,9 +30,6 @@ function loadingDeleyPlugin(fetchInstance, options) {
         }, loadingDeley);
       }
 
-      return {
-        loading: false,
-      };
     },
     onFinally: () => {
       cancelTimeout();
