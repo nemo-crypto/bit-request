@@ -12,3 +12,14 @@ test('malformed encodings and missing browser globals do not crash parsing', () 
   assert.equal(getParameterByName('x'), '');
   assert.equal(getParameterByName('x', ''), '');
 });
+
+test('browser fallback, repeated values and explicit empty URLs stay distinct', () => {
+  const previous = globalThis.window;
+  globalThis.window = {location: {search: '?x=first+value&x=second&empty='}};
+  try {
+    assert.equal(getParameterByName('x'), 'first value');
+    assert.equal(getParameterByName('x', ''), '');
+    assert.equal(getParameterByName('empty'), '');
+    assert.equal(getParameterByName('absent'), '');
+  } finally { if (previous === undefined) delete globalThis.window; else globalThis.window = previous; }
+});
