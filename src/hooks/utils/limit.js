@@ -3,9 +3,12 @@ export default function limit(fn, timespan) {
   return (...args) => {
     if (pending) return;
     pending = true;
-    fn(...args);
-    setTimeout(() => {
-      pending = false;
-    }, timespan);
+    try {
+      fn(...args);
+    } finally {
+      setTimeout(() => {
+        pending = false;
+      }, timespan);
+    }
   };
 }
