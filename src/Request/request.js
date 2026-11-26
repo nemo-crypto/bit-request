@@ -116,6 +116,7 @@ export class Request {
         if (requestInterceptorsCatch && isFunction(requestInterceptorsCatch)) {
           return requestInterceptorsCatch(error);
         }
+        return Promise.reject(error);
       },
     );
 
@@ -137,6 +138,7 @@ export class Request {
         ) {
           return responseInterceptorsCatch(this.axiosInstance, error);
         }
+        return Promise.reject(error);
       },
     );
   }
