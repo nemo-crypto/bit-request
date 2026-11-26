@@ -25,10 +25,6 @@ export const transform = {
 
     let { data, config } = res || {};
 
-    if (!data) {
-      throw new Error('request error!');
-    }
-
     const { transformData } = options;
 
     if (transformData && isFunction(transformData)) {
@@ -39,13 +35,13 @@ export const transform = {
       }
     }
     // 除json等文件请求以外的响应数据如果没有code，提示响应数据格式不符合标准
-    if (!('code' in data) && !/^[\s\S]*\.[\s\S]*$/.test(config.url)) {
+    if (data != null && typeof data === 'object' && !('code' in data) && !/^[\s\S]*\.[\s\S]*$/.test(config.url)) {
       console.warn(
         '请求返回的数据格式不符合标准，请添加transformData修改或让服务端调整响应数据格式。否则下次升级版本将直接报错',
       );
     }
 
-    return data || null;
+    return data;
   },
 
   /**
@@ -141,8 +137,8 @@ export const transform = {
    * @description: 响应拦截器处理
    */
   responseInterceptors: (res) => {
-    // 请求失败 2xx
-    if (res.status !== 200) {
+    // 所有 2xx 状态均表示成功，包括创建成功和无内容响应。
+    if (res.status < 200 || res.status >= 300) {
       return Promise.reject(res);
     }
     return res;
