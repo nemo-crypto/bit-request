@@ -28,3 +28,18 @@ test('unsubscribing during focus notification does not skip other listeners', t 
   b.events.focus();
   assert.deepEqual(calls, ['first', 'second', 'second']);
 });
+
+test('hidden or offline documents suppress refresh until active again', t => {
+  const b = browser(t, false);
+  let calls = 0;
+  b.subscribe(() => calls++);
+  b.events.focus();
+  assert.equal(calls, 0);
+  navigator.onLine = true;
+  b.document.visibilityState = 'hidden';
+  b.events.visibilitychange();
+  assert.equal(calls, 0);
+  b.document.visibilityState = 'visible';
+  b.events.visibilitychange();
+  assert.equal(calls, 1);
+});
