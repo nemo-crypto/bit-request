@@ -31,10 +31,9 @@ export const deepMerge = (...configs) => {
  * @return {String} 值
  */
 export const getParameterByName = (name, url) => {
-  name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
-  let regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
-    results = regex.exec(url || window.location.search);
-  return results === null
-    ? ''
-    : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  const source = url ?? (typeof window !== 'undefined' ? window.location.search : '');
+  const withoutFragment = source.split('#', 1)[0];
+  const queryIndex = withoutFragment.indexOf('?');
+  if (queryIndex < 0) return '';
+  return new URLSearchParams(withoutFragment.slice(queryIndex + 1)).get(name) ?? '';
 };
