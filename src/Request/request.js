@@ -104,11 +104,11 @@ export class Request {
           config.requestOptions?.ignoreCancelToken !== 'undefined'
             ? config.requestOptions?.ignoreCancelToken
             : this.options.requestOptions?.ignoreCancelToken;
-        !ignoreCancel && axiosCanceler.addPending(config);
 
         if (requestInterceptors && isFunction(requestInterceptors)) {
           config = requestInterceptors(config, this.options);
         }
+        !ignoreCancel && axiosCanceler.addPending(config);
 
         return config;
       },
@@ -123,7 +123,7 @@ export class Request {
     // 响应结果拦截器处理
     this.axiosInstance.interceptors.response.use(
       (res) => {
-        res && axiosCanceler.removePending(res.config);
+        res && axiosCanceler.completePending(res.config);
 
         if (responseInterceptors && isFunction(responseInterceptors)) {
           res = responseInterceptors(res);
@@ -132,6 +132,7 @@ export class Request {
         return res;
       },
       (error) => {
+        axiosCanceler.completePending(error?.config);
         if (
           responseInterceptorsCatch &&
           isFunction(responseInterceptorsCatch)
