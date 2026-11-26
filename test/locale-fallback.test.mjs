@@ -14,3 +14,10 @@ test('unknown query locale falls back to English instead of crashing import', ()
 test('supported query locale is retained', () => {
   assert.equal(translate('?hl=zh_CN'), '错误请求：服务器无法理解该请求。');
 });
+
+test('unknown language cookie cannot break translation initialization', () => {
+  const previous = globalThis.document;
+  globalThis.document = {cookie: 'clientCommonlanguage=constructor'};
+  try { assert.match(translate(''), /Bad Request/); }
+  finally { if (previous === undefined) delete globalThis.document; else globalThis.document = previous; }
+});
