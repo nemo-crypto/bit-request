@@ -1,4 +1,4 @@
-const listeners = [];
+const listeners = new Set();
 
 const isBrowser = !!(
   typeof window !== 'undefined' &&
@@ -14,29 +14,23 @@ const isDocumentVisible = () => {
 };
 
 const isOnline = () => {
-  if (isBrowser && typeof navigator.onLine !== undefined) {
+  if (isBrowser && typeof navigator !== 'undefined' && typeof navigator.onLine === 'boolean') {
     return navigator.onLine;
   }
   return true;
 };
 
 function subscribe(listener) {
-  listeners.push(listener);
-  return function unsubscribe() {
-    const index = listeners.indexOf(listener);
-    if (index > -1) {
-      listeners.splice(index, 1);
-    }
-  };
+  const entry = () => listener();
+  listeners.add(entry);
+  return () => listeners.delete(entry);
 }
 
 if (isBrowser) {
   const revalidate = () => {
     if (!isDocumentVisible() || !isOnline()) return;
-    for (let i = 0; i < listeners.length; i++) {
-      const listener = listeners[i];
-      listener();
-    }
+    // 当前轮次使用快照，回调内的订阅变更从下一轮生效。
+    [...listeners].forEach(listener => listener());
   };
   window.addEventListener('visibilitychange', revalidate, false);
   window.addEventListener('focus', revalidate, false);
