@@ -146,7 +146,7 @@ class Fetch {
   }
 
   mutate(data) {
-    const targetData = isFunction(data) ? data(this.state.data) : data;
+    const targetData = typeof data === 'function' ? data(this.state.data) : data;
     this.runPluginHandler('onMutate', targetData);
     this.setState({
       data: targetData,
