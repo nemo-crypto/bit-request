@@ -178,15 +178,11 @@ export const transform = {
         : isNumber(retryRequestTimes)
         ? retryRequestTimes > 0
         : true;
-      config?.method?.toUpperCase() === 'GET' &&
-        needRetry &&
-        retryRequest.retry(axiosInstance, error);
+      if (config?.method?.toUpperCase() === 'GET' && needRetry) {
+        return retryRequest.retry(axiosInstance, error);
+      }
     }
 
-    // 忽略重试error
-    if (config?.__retryCount) {
-      return;
-    }
     return Promise.reject(error);
   },
 };
