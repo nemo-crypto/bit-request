@@ -176,10 +176,7 @@ export class Request {
           resolve(ret);
         })
         .catch((e) => {
-          // 取消请求
-          if (axios.isCancel(e)) {
-            return console.warn(e);
-          }
+          // 取消也是请求的终态，交还调用方处理，不能留下永不结束的 Promise。
           reject(e);
         });
     });
